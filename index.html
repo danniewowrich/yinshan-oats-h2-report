@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>阴山优麦 · 2026 H2 四力诊断与建议报告</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+@page {
+  size: A4;
+  margin: 1.5cm 1.5cm;
+}
+
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.75;
+  color: #333;
+  background: #F5F7FA;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #FFF;
+  padding: 60px 70px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.08);
+}
+
+/* ========== 顶部封面 ========== */
+.cover {
+  background: linear-gradient(135deg, #1E293B 0%, #2C3E50 100%);
+  color: #fff;
+  padding: 50px 60px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(220,38,38,0.15), transparent);
+  border-radius: 50%;
+}
+.cover .brand-tag {
+  display: inline-block;
+  font-size: 11pt;
+  padding: 4px 14px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+.cover h1 {
+  font-size: 32pt;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+.cover .subtitle {
+  font-size: 14pt;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 20px;
+}
+.cover .meta {
+  font-size: 10pt;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.9;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 18px;
+  margin-top: 22px;
+}
+.cover .version-badge {
+  display: inline-block;
+  background: #DC2626;
+  color: #fff;
+  padding: 3px 12px;
+  border-radius: 4px;
+  font-size: 10pt;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+/* ========== 大章节 H2 ========== */
+h2.chapter {
+  font-size: 20pt;
+  color: #1E293B;
+  margin: 50px 0 24px;
+  padding: 16px 20px;
+  background: linear-gradient(90deg, #f8f9fb 0%, #fff 100%);
+  border-left: 6px solid #DC2626;
+  border-radius: 4px;
+  page-break-after: avoid;
+}
+h2.chapter .num {
+  color: #DC2626;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+/* ========== 小节标题 ========== */
+h3.section {
+  font-size: 14pt;
+  color: #1E293B;
+  font-weight: 700;
+  margin: 28px 0 14px;
+  padding-left: 14px;
+  position: relative;
+  page-break-after: avoid;
+}
+h3.section::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 4px;
+  width: 4px; height: 20px;
+  background: #DC2626;
+  border-radius: 2px;
+}
+h3.section .badge {
+  font-size: 9pt;
+  padding: 2px 10px;
+  background: #FEE2E2;
+  color: #DC2626;
+  border-radius: 4px;
+  margin-left: 10px;
+  font-weight: 600;
+}
+
+h4.subsection {
+  font-size: 12pt;
+  color: #1E293B;
+  font-weight: 600;
+  margin: 20px 0 10px;
+  page-break-after: avoid;
+}
+
+/* ========== 核心判断金句 ========== */
+.key-verdict {
+  background: linear-gradient(135deg, #FFF7ED 0%, #FEF3C7 100%);
+  border-left: 5px solid #F59E0B;
+  padding: 20px 28px;
+  border-radius: 6px;
+  margin: 20px 0;
+  font-size: 11.5pt;
+  line-height: 1.9;
+  color: #7C2D12;
+}
+.key-verdict strong {
+  color: #DC2626;
+  font-weight: 700;
+}
+
+/* ========== 数字大卡（KPI 展示） ========== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+.kpi-card {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  padding: 20px 16px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.kpi-card.highlight {
+  background: linear-gradient(135deg, #FEF2F2 0%, #FFF 100%);
+  border-color: #FCA5A5;
+}
+.kpi-card .kpi-value {
+  font-size: 26pt;
+  font-weight: 700;
+  color: #DC2626;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.kpi-card.dark .kpi-value {
+  color: #1E293B;
+}
+.kpi-card .kpi-label {
+  font-size: 9pt;
+  color: #6B7280;
+  margin-bottom: 4px;
+}
+.kpi-card .kpi-sub {
+  font-size: 8pt;
+  color: #9CA3AF;
+}
+
+/* ========== 数据表格（腾讯咨询风） ========== */
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 15px 0;
+  font-size: 10pt;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  page-break-inside: avoid;
+}
+table.data-table thead th {
+  background: #2C3E50;
+  color: #fff;
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 10pt;
+  letter-spacing: 0.3px;
+}
+table.data-table tbody td {
+  padding: 11px 14px;
+  border-bottom: 1px solid #EDF0F5;
+  vertical-align: top;
+}
+table.data-table tbody tr:nth-child(even) {
+  background: #F8FAFC;
+}
+table.data-table tbody tr:hover {
+  background: #FEF9E7;
+}
+table.data-table td.label-cell {
+  color: #DC2626;
+  font-weight: 600;
+}
+table.data-table strong {
+  color: #DC2626;
+  font-weight: 700;
+}
+table.data-table td.center { text-align: center; }
+table.data-table .star { color: #F59E0B; letter-spacing: -2px; }
+
+/* ========== 三段式卡片 ========== */
+.triple-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+.tri-card {
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  padding: 20px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.tri-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+.tri-card.p0::before { background: #DC2626; }
+.tri-card.p1::before { background: #F59E0B; }
+.tri-card.p2::before { background: #3B82F6; }
+.tri-card .card-emoji {
+  font-size: 24pt;
+  margin-bottom: 8px;
+}
+.tri-card .card-title {
+  font-size: 12pt;
+  font-weight: 700;
+  color: #1E293B;
+  margin-bottom: 8px;
+}
+.tri-card .card-desc {
+  font-size: 9.5pt;
+  color: #6B7280;
+  line-height: 1.7;
+}
+.tri-card .card-metric {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed #E5E7EB;
+  font-size: 9pt;
+  color: #DC2626;
+  font-weight: 600;
+}
+
+/* ========== 双列对比（阴山 vs 抖音、H1 vs H2 等） ========== */
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 20px 0;
+}
+.comp-card {
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 24px;
+}
+.comp-card.left { border-color: #93C5FD; background: #EFF6FF; }
+.comp-card.right { border-color: #FCA5A5; background: #FEF2F2; }
+.comp-card .comp-title {
+  font-size: 12pt;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #1E293B;
+}
+.comp-card ul {
+  list-style: none;
+  padding: 0;
+}
+.comp-card ul li {
+  padding: 6px 0;
+  font-size: 10pt;
+  color: #4A5568;
+  border-bottom: 1px dashed rgba(0,0,0,0.06);
+}
+.comp-card ul li:last-child { border: none; }
+.comp-card ul li strong { color: #DC2626; }
+
+/* ========== 阶段推进 ========== */
+.stage-flow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin: 20px 0;
+}
+.stage-item {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 14px 10px;
+  text-align: center;
+  position: relative;
+}
+.stage-item .stage-num {
+  display: inline-block;
+  width: 28px; height: 28px;
+  line-height: 28px;
+  background: #DC2626;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 11pt;
+  margin-bottom: 8px;
+}
+.stage-item .stage-name {
+  font-size: 10pt;
+  font-weight: 600;
+  color: #1E293B;
+  margin-bottom: 4px;
+}
+.stage-item .stage-time {
+  font-size: 8.5pt;
+  color: #6B7280;
+}
+
+/* ========== 底部金句/收束 ========== */
+.summary-box {
+  background: linear-gradient(135deg, #1E293B 0%, #2C3E50 100%);
+  color: #fff;
+  padding: 32px 36px;
+  border-radius: 12px;
+  margin: 30px 0;
+}
+.summary-box .summary-title {
+  font-size: 14pt;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #FCA5A5;
+}
+.summary-box p {
+  font-size: 11pt;
+  line-height: 1.9;
+  margin: 10px 0;
+  color: rgba(255,255,255,0.9);
+}
+.summary-box strong { color: #FCA5A5; }
+
+/* ========== 附录 ========== */
+.appendix {
+  background: #F8FAFC;
+  padding: 24px 30px;
+  border-radius: 10px;
+  margin: 20px 0;
+  border-left: 4px solid #94A3B8;
+}
+.appendix h4 {
+  color: #1E293B;
+  margin-bottom: 12px;
+  font-size: 11.5pt;
+}
+
+/* ========== 通用文字 ========== */
+p { margin: 10px 0; }
+strong { color: #DC2626; font-weight: 600; }
+ul, ol { margin: 10px 0 10px 24px; }
+ul li, ol li { margin: 4px 0; }
+
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 9pt;
+  font-weight: 600;
+  margin-right: 4px;
+}
+.tag-p0 { background: #FEE2E2; color: #DC2626; }
+.tag-p1 { background: #FEF3C7; color: #92400E; }
+.tag-p2 { background: #DBEAFE; color: #1E40AF; }
+.tag-new { background: #D1FAE5; color: #065F46; }
+
+/* ========== 打印按钮 ========== */
+.print-btn {
+  position: fixed;
+  top: 20px; right: 20px;
+  padding: 14px 26px;
+  background: #DC2626;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(220,38,38,0.4);
+  z-index: 1000;
+}
+
+/* ========== 打印优化 ========== */
+@media print {
+  body { background: #fff; }
+  .container { max-width: 100%; padding: 30px 40px; box-shadow: none; }
+  .print-btn { display: none; }
+  h2.chapter { page-break-after: avoid; break-after: avoid; }
+  table, .tri-card, .kpi-card, .comparison { page-break-inside: avoid; break-inside: avoid; }
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #E5E7EB, transparent);
+  margin: 30px 0;
+}
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">🖨️ 导出 PDF</button>
+
+<div class="container">
+
+<!-- ========== 封面 ========== -->
+<div class="cover">
+  <div class="brand-tag">YIN SHAN OATS · 2026 H2</div>
+  <h1>阴山优麦 · 四力诊断与增长方案<span class="version-badge">v6</span></h1>
+  <div class="subtitle">对标冲调品类目 · 从矩阵拉齐到确定性跃迁</div>
+  <div class="meta">
+    <strong style="color:#FCA5A5">数据基准</strong>：客户内部真实销售数据 · 友望冲调品竞品画像 · 微信生态账号资产实盘 · 投放勤奋度诊断 · 视频号方法论 (2026)<br>
+    <strong style="color:#FCA5A5">对标品牌</strong>：永和豆浆 #1 · 金味 #9 · 好麦多 #25 · 桂格 #74 · 西麦 SEAMILD #67
+  </div>
+</div>
+
+<!-- ========== 🎯 总起 ========== -->
+<h2 class="chapter"><span class="num">总</span>一句话判势</h2>
+
+<div class="key-verdict">
+阴山优麦是<strong>"品有底、货有货、内容有素材"</strong>的品牌——H1 视频号真实达成 <strong>456.72 万</strong>，矩阵账号（<strong>15+ 视频号/服务号/小程序/小店</strong>）雏形已成，三个自营直播间日播运行。 H2 关键不是"再多开几个直播间"，而是<strong>"矩阵拉齐分工 + 爆品聚焦 + 内容规模化 + 智投结构化"</strong>四件事同步推进——把"燕麦专家"心智重新立起来。
+</div>
+
+<h3 class="section">H1 核心指标速览</h3>
+
+<div class="kpi-grid">
+  <div class="kpi-card highlight">
+    <div class="kpi-value">457<span style="font-size:12pt;">万</span></div>
+    <div class="kpi-label">H1 视频号真实 GMV</div>
+    <div class="kpi-sub">完成 2025 全年 54%</div>
+  </div>
+  <div class="kpi-card dark">
+    <div class="kpi-value">15<span style="font-size:12pt;">+</span></div>
+    <div class="kpi-label">微信生态账号</div>
+    <div class="kpi-sub">视频号/服务号/小程序/小店</div>
+  </div>
+  <div class="kpi-card dark">
+    <div class="kpi-value">3<span style="font-size:12pt;">个</span></div>
+    <div class="kpi-label">日播自营直播间</div>
+    <div class="kpi-sub">燕麦 / 主食店 / 冲饮</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-value">640<span style="font-size:12pt;">万</span></div>
+    <div class="kpi-label">H2 目标 GMV</div>
+    <div class="kpi-sub">全年 1,095 万 · +28% vs 2025</div>
+  </div>
+</div>
+
+<h3 class="section">全局对标：四种模型的启示</h3>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>品牌</th>
+      <th>模式关键词</th>
+      <th>H1 GMV</th>
+      <th>单场直播</th>
+      <th>阴山可学</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="label-cell">永和豆浆 #1</td>
+      <td>节点大场王</td>
+      <td><strong>9,904 万</strong></td>
+      <td>18.7 万</td>
+      <td>节点大场机制 · 品牌节点+大主播+大促日</td>
+    </tr>
+    <tr>
+      <td class="label-cell">金味 #9</td>
+      <td>爆品单极</td>
+      <td>3,477 万</td>
+      <td>10.2 万</td>
+      <td>爆品单极模型 · 3 款"总监专属"打天下</td>
+    </tr>
+    <tr>
+      <td class="label-cell">好麦多 #25</td>
+      <td>内容驱动</td>
+      <td>1,242 万</td>
+      <td>3,159 元</td>
+      <td>权威背书组合拳 · KOC 内容矩阵化</td>
+    </tr>
+    <tr>
+      <td class="label-cell">西麦 #67</td>
+      <td>多主体矩阵</td>
+      <td>1,570 万+</td>
+      <td>4,420 元</td>
+      <td>多账号矩阵结构（阴山已具雏形）</td>
+    </tr>
+    <tr style="background:#FEE2E2;">
+      <td class="label-cell">🎯 阴山优麦</td>
+      <td>混合过渡型</td>
+      <td><strong>457 万</strong></td>
+      <td>4,745 元</td>
+      <td><strong>H2 先学金味提单场，再借永和做节点</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="divider"></div>
+
+<!-- ========== 📊 分述 · 一 ========== -->
+<h2 class="chapter"><span class="num">分 · 一</span>销售数据速览（客户真实口径）</h2>
+
+<h3 class="section">2026 H1 分产品线达成 <span class="badge">按产品线</span></h3>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>渠道</th>
+      <th>产品线</th>
+      <th class="center">2025 全年</th>
+      <th class="center">2026 H1</th>
+      <th class="center">销售占比</th>
+      <th class="center">H1/2025 进度</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3" style="vertical-align:middle;font-weight:600">平台运营组</td>
+      <td class="label-cell">视频号 · 燕麦片（大粒）</td>
+      <td class="center">432.72</td>
+      <td class="center"><strong>223.16</strong></td>
+      <td class="center"><strong>49%</strong></td>
+      <td class="center">52%</td>
+    </tr>
+    <tr>
+      <td class="label-cell">视频号 · 燕麦米</td>
+      <td class="center">241.18</td>
+      <td class="center"><strong>169.92</strong></td>
+      <td class="center"><strong>37%</strong></td>
+      <td class="center"><strong>70%</strong></td>
+    </tr>
+    <tr>
+      <td class="label-cell">视频号 · 低 GI</td>
+      <td class="center">─</td>
+      <td class="center">5.43</td>
+      <td class="center">1%</td>
+      <td class="center">调整期 <span class="tag tag-new">详见 5.3</span></td>
+    </tr>
+    <tr>
+      <td style="font-weight:600">直播运营组</td>
+      <td class="label-cell">微信视频号（达人带货）</td>
+      <td class="center">179.31</td>
+      <td class="center">58.21</td>
+      <td class="center">13%</td>
+      <td class="center"><strong style="color:#DC2626">32%</strong></td>
+    </tr>
+    <tr style="background:#F1F5F9;">
+      <td colspan="2" style="font-weight:700">合计</td>
+      <td class="center"><strong>853.21</strong></td>
+      <td class="center"><strong>456.72</strong></td>
+      <td class="center">100%</td>
+      <td class="center"><strong>54%</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="section">🔥 抖音 vs 视频号 · 分品线对照（新增）</h3>
+
+<p>客户抖音自播已跑通完整货盘（月均 <strong>610 万</strong>）；视频号大盘（月均 <strong>76 万</strong>）= 抖音的 <strong>12.5%</strong>。<strong>逐品线看，视频号复制率差距悬殊：</strong></p>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>产品线</th>
+      <th class="center">抖音月 GMV</th>
+      <th class="center">视频号月 GMV</th>
+      <th class="center">视频号/抖音</th>
+      <th class="center">H2 视频号目标</th>
+      <th>判断</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="label-cell">燕麦片（大粒）</td>
+      <td class="center">300 万</td>
+      <td class="center">37 万</td>
+      <td class="center">12.3%</td>
+      <td class="center">40 万</td>
+      <td>保盘，节奏健康</td>
+    </tr>
+    <tr>
+      <td class="label-cell">燕麦米</td>
+      <td class="center">180 万</td>
+      <td class="center">28 万</td>
+      <td class="center">15.6%</td>
+      <td class="center">42 万</td>
+      <td>相对健康，可重仓</td>
+    </tr>
+    <tr style="background:#FEE2E2;">
+      <td class="label-cell">🚨 低 GI</td>
+      <td class="center"><strong>100 万</strong></td>
+      <td class="center">&lt; 1 万</td>
+      <td class="center"><strong>&lt; 1%</strong></td>
+      <td class="center">10 万</td>
+      <td><strong>最大缺口，必须双开</strong></td>
+    </tr>
+    <tr>
+      <td class="label-cell">胚芽燕麦片</td>
+      <td class="center">30 万</td>
+      <td class="center">承接在冲饮店</td>
+      <td class="center">─</td>
+      <td class="center">3-5 万</td>
+      <td>视频号补位</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="key-verdict" style="background: linear-gradient(135deg, #FEE2E2 0%, #FFF 100%); border-left-color: #DC2626; color: #7F1D1D;">
+<strong>核心洞察</strong>：低 GI 在抖音月产 100 万，在视频号几乎为零。视频号 H1 因原有低 GI 直播间关停，只在冲饮店挂了一款低 GI 藜麦小麦胚芽 SKU 承接。<strong>H2 必须双开：即使只做到抖音的 10%（即月 10 万），全年也能带来 60 万+ 新增。</strong>
+</div>
+
+<div class="divider"></div>
+
+<!-- ========== 📊 分述 · 二 组织力 ========== -->
+<h2 class="chapter"><span class="num">分 · 二</span>组织力：矩阵拉齐 + 达人通道修复</h2>
+
+<h3 class="section">2.1 效率对标</h3>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>效率指标</th>
+      <th>阴山优麦 H1</th>
+      <th>冲调类目对标</th>
+      <th>差距解读</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="label-cell">平台/直播运营 GMV 比</td>
+      <td>87% : 13%</td>
+      <td>永和/金味 自营直播占 95%+</td>
+      <td>平台运营已主力，达人带货未跑通</td>
+    </tr>
+    <tr>
+      <td class="label-cell">矩阵账号数量</td>
+      <td><strong>15+</strong></td>
+      <td>西麦 15 视频号 / 13 小店</td>
+      <td>数量对标西麦，<strong>分工/协同未拉齐</strong></td>
+    </tr>
+    <tr>
+      <td class="label-cell">达人带货 GMV</td>
+      <td>H1 58 万</td>
+      <td>好麦多 417 万</td>
+      <td>通道已通，规模差 7 倍</td>
+    </tr>
+    <tr>
+      <td class="label-cell">达人带货 vs 2025 进度</td>
+      <td><strong style="color:#DC2626">32%</strong></td>
+      <td>─</td>
+      <td>四条线中恢复最慢</td>
+    </tr>
+    <tr>
+      <td class="label-cell">视频内容矩阵</td>
+      <td>22 创作者 / 5.9K 转发</td>
+      <td>好麦多 146 创作者 / 194K 转发</td>
+      <td>内容规模差 30 倍</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="section">2.2 【专题】阴山优麦是否适合开矩阵号直播间？<span class="badge">核心问题</span></h3>
+
+<div class="key-verdict">
+<strong>结论：适合，且方向对</strong>，但需要"三定"重构（定分工 · 定流量 · 定评估）。当前 3 个日播自营直播间的<strong>人设/产品/视觉已具备差异化</strong>——燕麦（工厂）/ 主食店（家庭厨房）/ 冲饮（低 GI + 张宏民）——矩阵基础在，但内部竞争与流量互导未打通。
+</div>
+
+<h4 class="subsection">① 定分工（每个直播间只做一件事）</h4>
+
+<div class="triple-cards">
+  <div class="tri-card p0">
+    <div class="card-emoji">🏭</div>
+    <div class="card-title">阴山优麦燕麦（主号）</div>
+    <div class="card-desc">
+      <strong>品牌+爆品直播间</strong><br>
+      主打：大粒燕麦（工厂店主推 SKU）+ <strong>张宏民推荐款</strong><br>
+      场景：内蒙古产地实景<br>
+      人群：家庭主妇、宝妈
+    </div>
+    <div class="card-metric">月 GMV 目标：40 万+</div>
+  </div>
+  <div class="tri-card p0">
+    <div class="card-emoji">🍚</div>
+    <div class="card-title">阴山优麦主食店</div>
+    <div class="card-desc">
+      <strong>场景种草直播间</strong><br>
+      主打：燕麦米<br>
+      场景：家庭餐桌 + 电饭煲现场煮<br>
+      人群：三餐主厨、健康家庭
+    </div>
+    <div class="card-metric">月 GMV 目标：30 万+</div>
+  </div>
+  <div class="tri-card p0">
+    <div class="card-emoji">🥣</div>
+    <div class="card-title">阴山优麦冲饮</div>
+    <div class="card-desc">
+      <strong>功能种草直播间</strong><br>
+      主打：低 GI 藜麦小麦胚芽 5 谷<br>
+      场景：663 项检测报告 + 张宏民口播<br>
+      人群：控糖人群、健身族
+    </div>
+    <div class="card-metric">月 GMV 目标：15 万（爬坡期）</div>
+  </div>
+</div>
+
+<h4 class="subsection">② 定流量（矩阵内相互导流机制）</h4>
+<ul>
+  <li><strong>双号关联</strong>：主号"燕麦"关联"主食店/冲饮"两个子号，触发合规公私转推送</li>
+  <li><strong>短视频互推</strong>：每直播间每周至少 1 条短视频 @ 另外两个直播间</li>
+  <li><strong>服务号联动</strong>："阴山优麦国产燕麦""官方旗舰店"两个服务号统一推送三间开播提醒</li>
+  <li><strong>小程序承接</strong>："阴山优麦小燕子"作为跳转中枢，用户可去任意小店</li>
+</ul>
+
+<h4 class="subsection">③ 定评估（矩阵效率指标 · 对标抖音+2025 增速合理测算）</h4>
+
+<div class="key-verdict" style="background: linear-gradient(135deg, #F0F9FF 0%, #FFF 100%); border-left-color: #3B82F6; color: #1E3A8A;">
+<strong>指标设定逻辑</strong>：以"抖音同品线月产×15% 复制率"为下限，以"2025 视频号月均×+20%"为上限，取合理区间；节点大场（双 11 等）单独放量。
+</div>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>直播间</th>
+      <th class="center">抖音月产</th>
+      <th class="center">2025 视频号月均</th>
+      <th class="center">H2 月 GMV 目标</th>
+      <th>目标设定依据</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="label-cell">🏭 燕麦（主号）</td>
+      <td class="center">燕麦片 300 万</td>
+      <td class="center">36 万</td>
+      <td class="center"><strong>40 万</strong></td>
+      <td>抖音复制 13% + 2025 同期基础 +10%</td>
+    </tr>
+    <tr>
+      <td class="label-cell">🍚 主食店</td>
+      <td class="center">燕麦米 180 万</td>
+      <td class="center">20 万</td>
+      <td class="center"><strong>30 万</strong></td>
+      <td>抖音复制 16% + 2025 +50%（燕麦米蓝海）</td>
+    </tr>
+    <tr>
+      <td class="label-cell">🥣 冲饮</td>
+      <td class="center">低 GI 100 万 + 胚芽 30 万</td>
+      <td class="center">─</td>
+      <td class="center"><strong>15 万</strong></td>
+      <td>抖音复制 12%（新赛道爬坡期）</td>
+    </tr>
+    <tr>
+      <td class="label-cell">💫 达人带货</td>
+      <td class="center">─</td>
+      <td class="center">15 万</td>
+      <td class="center"><strong>20 万</strong></td>
+      <td>恢复到 2025 水平 +33%</td>
+    </tr>
+    <tr style="background:#F1F5F9;">
+      <td colspan="3" style="font-weight:700">🎯 H2 三个直播间月 GMV 合计</td>
+      <td class="center"><strong style="font-size:14pt">≥ 105 万</strong></td>
+      <td>vs H1 月均 76 万 · +38%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="section">2.3 直播间用户价值分层（转关注→留存策略）</h3>
+
+<p>对标视频号方法论"直播间用户价值分层"，把粉丝变留存用户：</p>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>层级</th>
+      <th>转化倍数</th>
+      <th>阴山对应动作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="label-cell">浅层（粉丝）</td>
+      <td>视频号粉丝 CVR = 非粉丝的 <strong>2.9 倍</strong></td>
+      <td>直播间每 15 分钟一次"点关注"引导话术</td>
+    </tr>
+    <tr>
+      <td class="label-cell">中层（收藏/微会员）</td>
+      <td>收藏用户 UV 价值 = 平均 <strong>1.29 倍</strong></td>
+      <td>直播间收藏券策略"哥哥姐姐别急着买，先点收藏，可以领个券/下次用"</td>
+    </tr>
+    <tr>
+      <td class="label-cell">深层（视频号+服务号双关注）</td>
+      <td>7 日内下单 ROI = 24 小时净成交 <strong>1.25 倍</strong></td>
+      <td>直播间引导关注视频号+服务号双号，7 天内触发合规推送</td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="font-size:9.5pt;color:#6B7280;margin-top:8px;">
+💡 <strong>注</strong>：微信小店目前<strong>没有"跨小店会员打通"</strong>的官方能力（经核对，多店会员积分互通功能未开放）。H2 建议先做<strong>单店内会员体系</strong>（收藏 → 关注 → 复购），跨店私域打通通过服务号统一触达实现。
+</p>
+
+<h3 class="section">2.4 H2 组织力行动清单</h3>
+<table class="data-table">
+  <thead>
+    <tr><th style="width:60px">优先级</th><th>动作</th><th>责任线</th><th>关键成果</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="tag tag-p0">P0</span></td><td>矩阵"三定"重构（分工/流量/评估）</td><td>老板+电商</td><td>三个直播间跑通清晰模型</td></tr>
+    <tr><td><span class="tag tag-p0">P0</span></td><td>修复达人带货通道</td><td>直播/达人</td><td>H2 达人带货 ≥ 120 万</td></tr>
+    <tr><td><span class="tag tag-p0">P0</span></td><td>组建达人分销小组（1-2 人专职）</td><td>电商</td><td>H2 建 30-50 位活跃 KOC 池</td></tr>
+    <tr><td><span class="tag tag-p0">P0</span></td><td>每月至少 2 场节点大场（H2 共 12 场）</td><td>三方联动</td><td>大场单场 GMV ≥ 5 万，双 11 冲 20 万</td></tr>
+    <tr><td><span class="tag tag-p1">P1</span></td><td>"内容-投放-直播"周会机制</td><td>项目负责人</td><td>素材复用率 ≥ 60%</td></tr>
+    <tr><td><span class="tag tag-p1">P1</span></td><td>主播 KPI：场次数 → 单场 GMV×完播率×转化率</td><td>直播负责人</td><td>自营主号单场 8,447 元 → 3 万+</td></tr>
+  </tbody>
+</table>
+
+<div class="divider"></div>
+
+<!-- ========== 📊 分述 · 三 商品力 ========== -->
+<h2 class="chapter"><span class="num">分 · 三</span>商品力：四条产品线 + 张宏民推荐大粒燕麦爆品</h2>
+
+<h3 class="section">3.1 用户画像与"人货场"</h3>
+
+<div class="comparison">
+  <div class="comp-card left">
+    <div class="comp-title">👥 视频号人群本质需求</div>
+    <ul>
+      <li><strong>健康与安全</strong> → 有机认证、663 项检测、原产地</li>
+      <li><strong>家庭呵护</strong> → 全家营养、儿童早餐、老人早餐</li>
+      <li><strong>悦己与养护</strong> → 血糖友好、体态管理</li>
+      <li><strong>认同和优越感</strong> → 央视主持人推荐、送礼有面子</li>
+    </ul>
+  </div>
+  <div class="comp-card right">
+    <div class="comp-title">🎯 同品视频号 vs 抖音卖点转换</div>
+    <ul>
+      <li><strong>大粒燕麦</strong>：抖音卖"嘴馋尝鲜" → 视频号卖"<strong>囤好货+送礼+张宏民推荐</strong>"</li>
+      <li><strong>低 GI 冲饮</strong>：抖音卖"控糖代餐" → 视频号卖"<strong>663 项检测+营养师推荐</strong>"</li>
+      <li><strong>视频号规格偏大</strong>：家庭装/囤货装/送礼装占比高</li>
+    </ul>
+  </div>
+</div>
+
+<h3 class="section">3.2 【核心调整】大粒燕麦爆品 = 张宏民推荐款</h3>
+
+<div class="key-verdict">
+H2 大粒燕麦线主爆品定位为<strong>"张宏民推荐 · 有机大粒燕麦（家庭装/送礼装）"</strong>——直接复用张宏民已录素材（3 组现有 + 5 条新拍场景化内容），主图/详情页/直播间贴片/短视频统一嵌入张宏民元素，形成品类心智占位。
+</div>
+
+<h4 class="subsection">3.2.1 张宏民推荐款商品命名与视觉规范</h4>
+
+<table class="data-table">
+  <thead>
+    <tr><th>位置</th><th>内容</th><th>说明</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="label-cell">商品标题</td><td>[张宏民推荐] 阴山优麦有机大粒燕麦片 850g×2 桶 · 送试吃 5 小包 · 阴山产地直发</td><td>套用视频号标题万能公式</td></tr>
+    <tr><td class="label-cell">主图 1 号位</td><td>顶部横贯"阴山优麦 · 国产有机好燕麦"</td><td>品牌调性打底</td></tr>
+    <tr><td class="label-cell">主图 2 号位</td><td>张宏民手持产品图 + "央视主持人推荐"标签</td><td>信任感强化</td></tr>
+    <tr><td class="label-cell">主图 3 号位</td><td>到手价 79.9 起 · 划线原价 129</td><td>价格锚点</td></tr>
+    <tr><td class="label-cell">主图 4 号位</td><td>产品全摆放 + 赠品并列</td><td>货组可视化</td></tr>
+    <tr><td class="label-cell">主图 5 号位</td><td>底部保障栏：663 项检测 · 有机认证 · 顺丰冷链 · 7 天无理由</td><td>信任栏</td></tr>
+  </tbody>
+</table>
+
+<h3 class="section">3.3 五张背书牌盘点（阴山比好麦多多 1-2 张）</h3>
+
+<table class="data-table">
+  <thead>
+    <tr><th>#</th><th>背书牌</th><th>内容</th><th>权威等级</th><th>核心用途</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="label-cell">①</td><td class="label-cell">张宏民推荐</td><td>央视主持人推荐品牌（注：非代言人）</td><td class="star">★★★★★</td><td>信任感 / 送礼场景</td></tr>
+    <tr><td class="label-cell">②</td><td class="label-cell">12 位国家一级营养师</td><td>专业营养师联合背书</td><td class="star">★★★★★</td><td>健康 / 功能诉求</td></tr>
+    <tr><td class="label-cell">③</td><td class="label-cell">有机认证 + 663 项检测</td><td>检测数据背书</td><td class="star">★★★★</td><td>品质诉求</td></tr>
+    <tr><td class="label-cell">④</td><td class="label-cell">阴山产地（乌兰察布）</td><td>中国燕麦之都 · 产地故事</td><td class="star">★★★★</td><td>品牌资产</td></tr>
+    <tr><td class="label-cell">⑤</td><td class="label-cell">线下商超渠道合作</td><td>区域连锁商超合作背书（如银座商城等）</td><td class="star">★★★</td><td>区域信任 / 渠道认证</td></tr>
+  </tbody>
+</table>
+
+<h3 class="section">3.4 直播间货盘金字塔结构（每场必备）</h3>
+
+<table class="data-table">
+  <thead>
+    <tr><th class="center">层级</th><th class="center">占比</th><th>产品用途</th><th>阴山对应</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="label-cell center">调性品</td><td class="center">5%</td><td>提升品牌调性、买赠方式</td><td>张宏民联名礼盒</td></tr>
+    <tr><td class="label-cell center">赠品</td><td class="center">10%</td><td>直播间福袋、抽奖</td><td>试吃小包装</td></tr>
+    <tr><td class="label-cell center">引流品</td><td class="center">15%</td><td>秒杀款破价 5% + 福利款 10%</td><td>29.9 元单包</td></tr>
+    <tr><td class="label-cell center">爆品</td><td class="center">20%</td><td>承接引流款流量、冲 GMV</td><td>79.9-99.9 元家庭装</td></tr>
+    <tr><td class="label-cell center">利润品</td><td class="center">50%</td><td>拉高 UV 价值、直播间模型</td><td>149.9-199.9 元礼盒/组合</td></tr>
+  </tbody>
+</table>
+
+<p style="margin-top:12px;">
+<strong>推荐排品策略</strong>：<strong>引流款 + 爆款 + 利润款</strong> 三段式（阴山品牌力已有基础，适合此模式）
+</p>
+
+<h3 class="section">3.5 H2 四条产品线目标</h3>
+
+<div class="kpi-grid">
+  <div class="kpi-card">
+    <div class="kpi-value">240</div>
+    <div class="kpi-label">大粒燕麦片（万）</div>
+    <div class="kpi-sub">张宏民推荐款主爆品</div>
+  </div>
+  <div class="kpi-card highlight">
+    <div class="kpi-value">250</div>
+    <div class="kpi-label">燕麦米（万）</div>
+    <div class="kpi-sub">第二增长曲线 · 重仓</div>
+  </div>
+  <div class="kpi-card highlight">
+    <div class="kpi-value">30</div>
+    <div class="kpi-label">低 GI（万）</div>
+    <div class="kpi-sub">从 5 → 30 · 双开视频号</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-value">120</div>
+    <div class="kpi-label">达人带货（万）</div>
+    <div class="kpi-sub">恢复 2025 水平</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ========== 📊 分述 · 四 内容力 ========== -->
+<h2 class="chapter"><span class="num">分 · 四</span>内容力：4 步营销方案 · 打卖点→匹配背书→怎么用→评估</h2>
+
+<div class="key-verdict">
+差距不是"素材质量"，而是"<strong>创作者矩阵规模</strong>"与"<strong>内容常态化产出节奏</strong>"——阴山 H1：22 创作者 / 160 视频 / <strong>5,891 转发</strong>；好麦多 H1：146 创作者 / 243 视频 / <strong>194,114 转发（差 33 倍）</strong>。
+</div>
+
+<h3 class="section">🎯 步骤 1 · 定义"打什么品牌卖点"</h3>
+
+<table class="data-table">
+  <thead>
+    <tr><th>卖点等级</th><th>核心卖点</th><th>对应产品线</th><th>目标人群</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="label-cell">★ 一级（品牌资产）</td><td>阴山产地（中国燕麦之都·乌兰察布）</td><td>全线</td><td>全人群</td></tr>
+    <tr><td class="label-cell">★ 一级</td><td>有机认证 + 663 项检测</td><td>大粒/有机/低GI</td><td>中产家庭/控糖人群</td></tr>
+    <tr><td class="label-cell">★★ 二级（差异化）</td><td>大粒工艺（煮出来能拉丝）</td><td>大粒燕麦片</td><td>家庭主妇/宝妈</td></tr>
+    <tr><td class="label-cell">★★ 二级</td><td>低 GI 认证（血糖友好）</td><td>低 GI 藜麦冲饮</td><td>控糖/健身族</td></tr>
+    <tr><td class="label-cell">★★★ 三级（场景）</td><td>主食替代</td><td>燕麦米</td><td>三餐主厨</td></tr>
+    <tr><td class="label-cell">★★★ 三级</td><td>冲饮场景</td><td>冲饮产品</td><td>上班族/学生</td></tr>
+  </tbody>
+</table>
+
+<h3 class="section">🏷️ 步骤 2 · 匹配背书资源（见 3.3 五张背书牌）</h3>
+
+<h3 class="section">🎬 步骤 3 · 怎么用（分层内容矩阵）</h3>
+
+<table class="data-table">
+  <thead>
+    <tr><th>产品线</th><th>主打卖点</th><th>匹配背书</th><th>核心内容形式</th><th>主要投放</th><th class="center">月产出</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="label-cell">🌾 大粒燕麦（张宏民主推）</td><td>有机大粒工艺</td><td>①张宏民 + ③663 检测</td><td>短视频对比 + 直播试吃</td><td>视频号自播+中腰部达人</td><td class="center">10 条</td></tr>
+    <tr><td class="label-cell">🌱 有机燕麦</td><td>663 项检测</td><td>③检测 + ④产地</td><td>产地纪录片 + 专家访谈</td><td>视频号+小红书 KOL</td><td class="center">8 条</td></tr>
+    <tr><td class="label-cell">💊 低 GI</td><td>血糖友好</td><td>②营养师 + 医生 IP</td><td>营养师讲解 + 血糖仪实测</td><td>冲饮直播间+达人专场</td><td class="center">12 条</td></tr>
+    <tr><td class="label-cell">🍚 燕麦米</td><td>主食替代</td><td>⑤线下商超合作 + 家庭场景</td><td>家庭餐桌短视频 + 3 种做法</td><td>主食店直播间+抖音+小红书</td><td class="center">10 条</td></tr>
+    <tr><td class="label-cell">🎤 张宏民系列</td><td>央视主持人推荐</td><td>①张宏民</td><td>已录素材剪辑 + 场景化重拍</td><td>冲饮店+朋友圈广告</td><td class="center">10 条</td></tr>
+  </tbody>
+</table>
+
+<h4 class="subsection">KOC 达人矩阵金字塔（22 人 → 80 人）</h4>
+
+<div class="triple-cards">
+  <div class="tri-card p0">
+    <div class="card-emoji">👑</div>
+    <div class="card-title">头部 KOL（1-2 人）</div>
+    <div class="card-desc">泛健康类头部（医生IP/营养师IP）· 保底+佣金 · 双 11 大场</div>
+  </div>
+  <div class="tri-card p1">
+    <div class="card-emoji">⭐</div>
+    <div class="card-title">腰部 KOL（5-8 人）</div>
+    <div class="card-desc">母婴/健身/控糖/三农/区域商超 · 短签+佣金 · 每月 2-3 条深度</div>
+  </div>
+  <div class="tri-card p2">
+    <div class="card-emoji">🌟</div>
+    <div class="card-title">KOC 池（30-50 + 100+ 铺量）</div>
+    <div class="card-desc">美食/生活/家庭主厨 · 寄样+佣金分销 · 每人月产 1-2 条</div>
+  </div>
+</div>
+
+<h3 class="section">📊 步骤 4 · 如何评估（三级评估指标）</h3>
+
+<table class="data-table">
+  <thead>
+    <tr><th>层级</th><th>指标</th><th class="center">H1 基准</th><th class="center">H2 目标</th><th class="center">评估周期</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3" style="vertical-align:middle;font-weight:600;background:#FEF3C7;">L1<br>勤奋度</td>
+      <td class="label-cell">短视频月产出</td><td class="center">27 条</td><td class="center"><strong>50 条</strong></td><td class="center">周报</td>
+    </tr>
+    <tr><td class="label-cell">创作者矩阵人数</td><td class="center">22 人</td><td class="center"><strong>80 人</strong></td><td class="center">月报</td></tr>
+    <tr><td class="label-cell">直播间贴片背书露出场次占比</td><td class="center">─</td><td class="center"><strong>100%</strong></td><td class="center">周报</td></tr>
+    <tr>
+      <td rowspan="3" style="vertical-align:middle;font-weight:600;background:#DBEAFE;">L2<br>种草力</td>
+      <td class="label-cell">单条转发 ≥ 5,000 的条数</td><td class="center">0</td><td class="center"><strong>≥ 3 条</strong></td><td class="center">月报</td>
+    </tr>
+    <tr><td class="label-cell">单条点赞 ≥ 1,000 的条数</td><td class="center">4 条</td><td class="center"><strong>≥ 15 条</strong></td><td class="center">月报</td></tr>
+    <tr><td class="label-cell">播放量 100 万+ 视频数</td><td class="center">0</td><td class="center"><strong>≥ 3 条</strong></td><td class="center">月报</td></tr>
+    <tr>
+      <td rowspan="4" style="vertical-align:middle;font-weight:600;background:#D1FAE5;">L3<br>转化力</td>
+      <td class="label-cell">内容素材投放 CTR</td><td class="center">2.32%</td><td class="center"><strong>≥ 3%</strong></td><td class="center">周报</td>
+    </tr>
+    <tr><td class="label-cell">内容素材投放 CVR</td><td class="center">5.14%</td><td class="center"><strong>≥ 6%</strong></td><td class="center">周报</td></tr>
+    <tr><td class="label-cell">内容素材投放 ROI</td><td class="center">1.96</td><td class="center"><strong>≥ 2.5</strong></td><td class="center">月报</td></tr>
+    <tr><td class="label-cell">短视频→直播间引流转化率</td><td class="center">─</td><td class="center"><strong>≥ 8%</strong></td><td class="center">月报</td></tr>
+  </tbody>
+</table>
+
+<div class="divider"></div>
+
+<!-- ========== 📊 分述 · 五 经营力 ========== -->
+<h2 class="chapter"><span class="num">分 · 五</span>店铺/直播间经营力</h2>
+
+<h3 class="section">5.1 5 家小店 · H2 定位</h3>
+
+<table class="data-table">
+  <thead>
+    <tr><th>小店</th><th class="center">好评率</th><th>主推产品（首屏）</th><th>H2 决策</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="label-cell">阴山优麦工厂店</td><td class="center">95.8%</td><td>大粒燕麦 39.9 / 张宏民推荐款 99.9 / 心澄意满礼盒 99.9</td><td>保留 · <strong>品牌+爆品直播间</strong></td></tr>
+    <tr><td class="label-cell">阴山优麦主食店</td><td class="center">95.7%</td><td>有机胚芽燕麦米 99.9 / 全胚芽燕麦米 69.9 / 159.9</td><td>保留 · <strong>场景种草直播间</strong></td></tr>
+    <tr><td class="label-cell">阴山优麦冲饮</td><td class="center"><strong>100%</strong></td><td>雪花超大薄片 99.9 / 有机燕麦片 89.9 / 低 GI 藜麦 69.9</td><td>保留 · <strong>低 GI + 张宏民主场</strong></td></tr>
+    <tr><td class="label-cell">阴山优麦有机燕麦片</td><td class="center">─</td><td>达人专供货盘</td><td>保留 · 达人渠道</td></tr>
+    <tr><td class="label-cell">阴山优麦燕麦片</td><td class="center">─</td><td>备用</td><td><strong>合并入工厂店</strong></td></tr>
+  </tbody>
+</table>
+
+<h3 class="section">5.2 直播间稳定阶段 · 5 项装修自查</h3>
+
+<div class="stage-flow">
+  <div class="stage-item">
+    <div class="stage-num">1</div>
+    <div class="stage-name">顶部品牌+主题</div>
+    <div class="stage-time">主题字 ≥ 画宽 1/4</div>
+  </div>
+  <div class="stage-item">
+    <div class="stage-num">2</div>
+    <div class="stage-name">背书+痛点贴片</div>
+    <div class="stage-time">至少 2 项组合</div>
+  </div>
+  <div class="stage-item">
+    <div class="stage-num">3</div>
+    <div class="stage-name">价格大字+券后</div>
+    <div class="stage-time">到手价 ≥ 画宽 1/5</div>
+  </div>
+  <div class="stage-item">
+    <div class="stage-num">4</div>
+    <div class="stage-name">货组+赠品可视</div>
+    <div class="stage-time">产品占宽 ≥ 50%</div>
+  </div>
+  <div class="stage-item">
+    <div class="stage-num">5</div>
+    <div class="stage-name">底部保障栏</div>
+    <div class="stage-time">3-5 个保障图标</div>
+  </div>
+</div>
+
+<p style="margin-top:12px;font-size:9.5pt;color:#4A5568;">
+🔍 <strong>静音 3 秒自检法</strong>：关声音、截图 3 秒 → 一眼看懂"卖什么/多少钱/凭什么买/什么保障" · 4 项全清晰 = 达标
+</p>
+
+<h3 class="section">5.3 低 GI 视频号双开路径（客户重点关注）<span class="badge">新增</span></h3>
+
+<div class="key-verdict" style="background: linear-gradient(135deg, #FEF2F2 0%, #FFF 100%); border-left-color: #DC2626; color: #7F1D1D;">
+<strong>结论：非常有必要双开</strong>。抖音低 GI 月产 100 万，视频号目前仅冲饮店挂 1 款低 GI SKU 承接（月不足 1 万）。<strong>即使只做到抖音 10%，全年可新增 60-80 万；做到 15% 即接近抖音的燕麦米/大粒复制率。</strong>
+</div>
+
+<h4 class="subsection">低 GI 视频号双开阶段路径</h4>
+
+<div class="stage-flow" style="grid-template-columns: repeat(5, 1fr);">
+  <div class="stage-item">
+    <div class="stage-num">1</div>
+    <div class="stage-name">复制抖音货盘</div>
+    <div class="stage-time">7-8 月</div>
+  </div>
+  <div class="stage-item">
+    <div class="stage-num">2</div>
+    <div class="stage-name">背书视觉化</div>
+    <div class="stage-time">7 月立刻</div>
+  </div>
+  <div class="stage-item">
+    <div class="stage-num">3</div>
+    <div class="stage-name">分层种草</div>
+    <div class="stage-time">8-10 月</div>
+  </div>
+  <div class="stage-item">
+    <div class="stage-num">4</div>
+    <div class="stage-name">独立拆分直播间</div>
+    <div class="stage-time">10-11 月</div>
+  </div>
+  <div class="stage-item">
+    <div class="stage-num">5</div>
+    <div class="stage-name">达人矩阵接力</div>
+    <div class="stage-time">9-12 月</div>
+  </div>
+</div>
+
+<table class="data-table" style="margin-top:16px">
+  <thead><tr><th>阶段</th><th>关键动作</th><th class="center">时间</th><th class="center">目标</th></tr></thead>
+  <tbody>
+    <tr><td class="label-cell">阶段 1 · 复制抖音爆品</td><td>直接复用抖音已验证低 GI 藜麦小麦胚芽 SKU，视频号售价对齐</td><td class="center">7-8 月</td><td class="center">冲饮店承接·月 3 万</td></tr>
+    <tr><td class="label-cell">阶段 2 · 权威背书视觉化</td><td>663 项检测报告在直播间持续露出+有机认证+张宏民推荐口播</td><td class="center">7 月立刻</td><td class="center">─</td></tr>
+    <tr><td class="label-cell">阶段 3 · 分层内容种草</td><td>三甲医生 IP 讲低 GI + 健身达人吃法 + 糖友早餐场景 + 血糖仪实测</td><td class="center">8-10 月</td><td class="center">月 12 条视频</td></tr>
+    <tr><td class="label-cell">阶段 4 · 独立直播间</td><td>冲饮店月 GMV 稳定 15 万+后，拆分"阴山优麦低GI"独立视频号</td><td class="center">10-11 月</td><td class="center">独立月 10 万</td></tr>
+    <tr><td class="label-cell">阶段 5 · 达人矩阵</td><td>医生 IP + 健身 KOC + 糖友社群 KOL，形成常态化产出</td><td class="center">9-12 月</td><td class="center">≥ 5 位垂类达人</td></tr>
+  </tbody>
+</table>
+
+<h3 class="section">5.4 月度自播大场机制（3 类 9 型）</h3>
+
+<div class="triple-cards">
+  <div class="tri-card p0">
+    <div class="card-emoji">👥</div>
+    <div class="card-title">"人"重磅嘉宾</div>
+    <div class="card-desc">
+      内部嘉宾 / 达人专家 / 明星进播<br>
+      → <strong>张宏民专场 / 三甲营养师专场 / KOL 联动</strong>
+    </div>
+  </div>
+  <div class="tri-card p1">
+    <div class="card-emoji">📦</div>
+    <div class="card-title">"货"超级货品</div>
+    <div class="card-desc">
+      新品发布 / 联名直播 / 平台专供<br>
+      → <strong>低 GI 新品发布 / 区域商超联名 / 视频号专供组合</strong>
+    </div>
+  </div>
+  <div class="tri-card p2">
+    <div class="card-emoji">📍</div>
+    <div class="card-title">"场"创新场景</div>
+    <div class="card-desc">
+      展会商超 / 产地溯源 / 户外地标<br>
+      → <strong>阴山产地溯源直播（乌兰察布）/ 商超线下联播</strong>
+    </div>
+  </div>
+</div>
+
+<h4 class="subsection">H2 月度大场规划（12 场，累计 ≥ 140 万）</h4>
+
+<table class="data-table">
+  <thead><tr><th class="center">月</th><th>大场主题</th><th class="center">类型</th><th>场地</th><th class="center">GMV 目标</th></tr></thead>
+  <tbody>
+    <tr><td class="center label-cell">7</td><td>开学季·燕麦米主食主题</td><td class="center">货/场</td><td>主食店</td><td class="center">5 万</td></tr>
+    <tr><td class="center label-cell">8</td><td>818 平台大促·有机好燕麦</td><td class="center">货</td><td>工厂店</td><td class="center">8 万</td></tr>
+    <tr><td class="center label-cell">9</td><td>中秋礼盒专场</td><td class="center">货</td><td>工厂店+冲饮</td><td class="center">10 万</td></tr>
+    <tr style="background:#FEE2E2;"><td class="center label-cell">9</td><td><strong>阴山产地溯源直播</strong></td><td class="center">场</td><td>乌兰察布现场</td><td class="center"><strong>15 万</strong></td></tr>
+    <tr><td class="center label-cell">10</td><td>国庆大促·燕麦米三种做法</td><td class="center">货/场</td><td>主食店</td><td class="center">10 万</td></tr>
+    <tr><td class="center label-cell">10</td><td>双 11 预热·张宏民专场</td><td class="center">人</td><td>冲饮店</td><td class="center">12 万</td></tr>
+    <tr style="background:#FEE2E2;"><td class="center label-cell">11</td><td><strong>双 11 主场·达人+品牌双直播</strong></td><td class="center">人+货</td><td>工厂店+KOL 联播</td><td class="center"><strong>20 万</strong></td></tr>
+    <tr><td class="center label-cell">11</td><td>双 11 尾场·低 GI 专场</td><td class="center">货</td><td>冲饮店</td><td class="center">8 万</td></tr>
+    <tr><td class="center label-cell">12</td><td>双 12 家庭囤货节</td><td class="center">货</td><td>全直播间联动</td><td class="center">15 万</td></tr>
+    <tr><td class="center label-cell">12</td><td>年货节礼盒专场</td><td class="center">货</td><td>工厂店</td><td class="center">15 万</td></tr>
+    <tr><td class="center label-cell">12</td><td>元旦营养师专场</td><td class="center">人</td><td>工厂店+营养师</td><td class="center">10 万</td></tr>
+  </tbody>
+</table>
+
+<div class="divider"></div>
+
+<!-- ========== 📊 分述 · 六 投放力 ========== -->
+<h2 class="chapter"><span class="num">分 · 六</span>投放力：基建达标 → 结构跃迁</h2>
+
+<div class="key-verdict" style="background: linear-gradient(135deg, #F0F9FF 0%, #FFF 100%); border-left-color: #3B82F6; color: #1E3A8A;">
+诊断结论：<strong>L2 基建达标 · 结构待优化——借助智能投放实现跃迁</strong>。素材数 2,410 达标腰部 4 倍，但智投占比 54.3%（目标 70%）、小店广告占比 0%（目标 30%）、视频号版位过度集中 88.2%（行业 48%）。
+</div>
+
+<h3 class="section">6.1 现状勤奋度指标</h3>
+
+<div class="kpi-grid">
+  <div class="kpi-card dark">
+    <div class="kpi-value">54.3<span style="font-size:12pt;">%</span></div>
+    <div class="kpi-label">智投占比</div>
+    <div class="kpi-sub">目标 ≥ 70% · 差 15.7pp</div>
+  </div>
+  <div class="kpi-card highlight">
+    <div class="kpi-value">0<span style="font-size:12pt;">%</span></div>
+    <div class="kpi-label">小店广告占比</div>
+    <div class="kpi-sub">目标 30% · 完全空白</div>
+  </div>
+  <div class="kpi-card dark">
+    <div class="kpi-value">88.2<span style="font-size:12pt;">%</span></div>
+    <div class="kpi-label">视频号版位集中度</div>
+    <div class="kpi-sub">行业均值 48.4%</div>
+  </div>
+  <div class="kpi-card dark">
+    <div class="kpi-value">1.96</div>
+    <div class="kpi-label">当前 ROI</div>
+    <div class="kpi-sub">目标 ≥ 2.5</div>
+  </div>
+</div>
+
+<h3 class="section">6.2 三大付费工具组合</h3>
+
+<table class="data-table">
+  <thead><tr><th>工具</th><th>定位</th><th>阴山使用建议</th></tr></thead>
+  <tbody>
+    <tr><td class="label-cell">💰 微信豆</td><td>小额短时多计划叠加，博取起量机会</td><td>主号开播前段·拉高在线水位·快速精准转化过冷启</td></tr>
+    <tr><td class="label-cell">🏪 小店广告</td><td>系统自由探索，CPA 结算，适合中小商家保成本投放</td><td>冲饮店低 GI 用全托管模式启动·日耗 1-2 万起步</td></tr>
+    <tr><td class="label-cell">🚀 ADQ</td><td>长期稳定投放做好账户建模·智能素材拓展版位+多账户提量级</td><td>主账户系统承担探索成本·单广告计划 10 成投放冷启</td></tr>
+  </tbody>
+</table>
+
+<h3 class="section">6.3 H2 投放力 3 阶段行动清单</h3>
+
+<div class="triple-cards">
+  <div class="tri-card p0">
+    <div class="card-emoji">1️⃣</div>
+    <div class="card-title">第 1-2 周</div>
+    <div class="card-desc">
+      <strong>1:1 复制 + 开全场景</strong><br>
+      · 3 个纯非智投账户复制到智投<br>
+      · 开推直播/推直购/全店托管<br>
+      · 全店托管增加"推多品(61)"
+    </div>
+  </div>
+  <div class="tri-card p1">
+    <div class="card-emoji">2️⃣</div>
+    <div class="card-title">第 3-4 周</div>
+    <div class="card-desc">
+      <strong>双链路 + 智投提比</strong><br>
+      · 开通小店广告直购+直播双链路<br>
+      · 智投占比 → 60%（8月）<br>
+      · 版位拓展：小程序+朋友圈+公众号
+    </div>
+  </div>
+  <div class="tri-card p2">
+    <div class="card-emoji">3️⃣</div>
+    <div class="card-title">H2 全程</div>
+    <div class="card-desc">
+      <strong>三力并进</strong><br>
+      · 代言人素材投朋友圈广告<br>
+      · 12 场大场配合放大<br>
+      · 分销广告 ≥ 15%<br>
+      · 平台补贴覆盖 ≥ 50%
+    </div>
+  </div>
+</div>
+
+<h3 class="section">6.4 H2 投放力目标</h3>
+
+<table class="data-table">
+  <thead><tr><th>指标</th><th class="center">H1</th><th class="center">H2 目标</th></tr></thead>
+  <tbody>
+    <tr><td class="label-cell">智投占比</td><td class="center">54.3%</td><td class="center"><strong>70%</strong></td></tr>
+    <tr><td class="label-cell">小店广告占比</td><td class="center">0%</td><td class="center"><strong>30%</strong></td></tr>
+    <tr><td class="label-cell">版位集中度（视频号）</td><td class="center">88.2%</td><td class="center"><strong>60%</strong></td></tr>
+    <tr><td class="label-cell">ROI</td><td class="center">1.96</td><td class="center"><strong>≥ 2.5</strong></td></tr>
+    <tr><td class="label-cell">CVR（自营）</td><td class="center">5.14%</td><td class="center"><strong>≥ 6%</strong></td></tr>
+  </tbody>
+</table>
+
+<div class="divider"></div>
+
+<!-- ========== 📊 分述 · 七 分月路线图 ========== -->
+<h2 class="chapter"><span class="num">分 · 七</span>H2 分月行动路线图</h2>
+
+<table class="data-table">
+  <thead>
+    <tr><th class="center">月</th><th>关键动作</th><th class="center">大场</th><th class="center">月 GMV 目标</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="center label-cell">7 月</td>
+      <td>矩阵三定重构落地 · 3 非智投账户 1:1 复制 · 张宏民 10-15 条剪辑上线 · 主播 KPI 切换</td>
+      <td class="center">开学季（5万）</td>
+      <td class="center">75 万</td>
+    </tr>
+    <tr>
+      <td class="center label-cell">8 月</td>
+      <td>4 产品线内容脚本定稿 · 40 条短视频 · 开通小店广告双链路 · 智投 60%</td>
+      <td class="center">818（8万）</td>
+      <td class="center">85 万</td>
+    </tr>
+    <tr>
+      <td class="center label-cell">9 月</td>
+      <td>三直播间 5 项装修落地 · 低 GI 系统化包装完成 · 版位视频号降至 75%</td>
+      <td class="center">中秋（10万）+产地溯源（15万）</td>
+      <td class="center">95 万</td>
+    </tr>
+    <tr>
+      <td class="center label-cell">10 月</td>
+      <td>头部 KOL 洽谈完成 · 素材月产 50 条 · 智投 65% · 小店广告 20%</td>
+      <td class="center">国庆（10万）+张宏民专场（12万）</td>
+      <td class="center">110 万</td>
+    </tr>
+    <tr style="background:#FEE2E2;">
+      <td class="center label-cell">11 月</td>
+      <td><strong>双 11 决战月</strong> · 头部 KOL 联动大场 · 至少 1 条 100 万+ 播放短视频 · ROI 提至 2.3</td>
+      <td class="center"><strong>双 11 主场（20万）</strong>+低 GI 尾场（8万）</td>
+      <td class="center"><strong>150 万</strong></td>
+    </tr>
+    <tr>
+      <td class="center label-cell">12 月</td>
+      <td>年货节 · H2 复盘 · 品牌 IP 化立项 · 智投 70% · 小店广告 30% · ROI 2.5</td>
+      <td class="center">双 12（15）+年货节（15）+营养师（10）</td>
+      <td class="center">125 万</td>
+    </tr>
+    <tr style="background:#1E293B;color:#fff;">
+      <td colspan="3" style="font-weight:700;color:#FCA5A5;">🎯 H2 累计 GMV 目标</td>
+      <td class="center" style="font-size:14pt;font-weight:700;color:#FCA5A5;">≥ 640 万</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="divider"></div>
+
+<!-- ========== 📊 分述 · 八 目标达成 ========== -->
+<h2 class="chapter"><span class="num">分 · 八</span>H2 目标达成路径总览</h2>
+
+<table class="data-table">
+  <thead>
+    <tr><th>核心指标</th><th class="center">2025 全年</th><th class="center">H1 实际</th><th class="center">H2 目标</th><th class="center">2026 全年</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="label-cell">总 GMV（万）</td><td class="center">853</td><td class="center">457</td><td class="center"><strong>≥ 640</strong></td><td class="center"><strong>≥ 1,095</strong></td></tr>
+    <tr><td class="label-cell">大粒燕麦片</td><td class="center">433</td><td class="center">223</td><td class="center">240</td><td class="center">463</td></tr>
+    <tr><td class="label-cell">燕麦米</td><td class="center">241</td><td class="center">170</td><td class="center"><strong>250</strong></td><td class="center"><strong>420</strong></td></tr>
+    <tr><td class="label-cell">低 GI</td><td class="center">─</td><td class="center">5.4</td><td class="center"><strong>30</strong></td><td class="center">35</td></tr>
+    <tr><td class="label-cell">达人带货</td><td class="center">179</td><td class="center">58</td><td class="center"><strong>120</strong></td><td class="center">178</td></tr>
+    <tr><td class="label-cell">短视频月均产出</td><td class="center">─</td><td class="center">27</td><td class="center"><strong>≥ 50</strong></td><td class="center">─</td></tr>
+    <tr><td class="label-cell">创作者矩阵</td><td class="center">─</td><td class="center">22</td><td class="center"><strong>≥ 80</strong></td><td class="center">─</td></tr>
+    <tr><td class="label-cell">代言人矩阵层级</td><td class="center">1</td><td class="center">1</td><td class="center"><strong>3</strong></td><td class="center">3</td></tr>
+    <tr><td class="label-cell">智投占比</td><td class="center">─</td><td class="center">54.3%</td><td class="center"><strong>70%</strong></td><td class="center">─</td></tr>
+    <tr><td class="label-cell">小店广告占比</td><td class="center">─</td><td class="center">0%</td><td class="center"><strong>30%</strong></td><td class="center">─</td></tr>
+    <tr><td class="label-cell">ROI</td><td class="center">─</td><td class="center">1.96</td><td class="center"><strong>≥ 2.5</strong></td><td class="center">─</td></tr>
+  </tbody>
+</table>
+
+<div class="divider"></div>
+
+<!-- ========== 🎯 总结 ========== -->
+<h2 class="chapter"><span class="num">总</span>给客户的三句话</h2>
+
+<div class="summary-box">
+  <div class="summary-title">1️⃣ 组织力</div>
+  <p>矩阵账号已有 <strong>15+</strong>，H2 关键是<strong>"三定"重构</strong>——三个日播直播间明确"品牌+爆品 / 场景种草 / 功能种草"三种角色；同时修复达人带货通道（H1 达成率仅 32%），把"以场次考核"改为"以单场 GMV 考核"。</p>
+
+  <div class="summary-title" style="margin-top:20px">2️⃣ 内容力（最大机会）</div>
+  <p>手握<strong>张宏民推荐、12 位营养师、有机 663 项检测、阴山产地、线下商超合作</strong>——这五张背书牌够别人打半年内容战。H2 关键是<strong>"权威背书视觉化 + 分层种草 + KOC 矩阵化"</strong>：单条商品主图前三屏统一嵌入 3 张背书牌；创作者从 22 人扩到 80 人；对标好麦多"内容驱动矩阵"，你差的不是素材，是节奏和评估。</p>
+
+  <div class="summary-title" style="margin-top:20px">3️⃣ 商品+经营+投放</div>
+  <p><strong>大粒燕麦爆品 = 张宏民推荐款</strong>（品类心智占位）；燕麦米重仓（H1 已 37% 占比）；<strong>低 GI 必须双开视频号</strong>（抖音月产 100 万，视频号 &lt;1 万，最大缺口）；直播间用 5 项自查清单做视觉升级；月度大场按"3 类 9 型"策划 12 场；投放遵循勤奋度诊断行动清单（1:1 复制 → 双链路 → 智投 70%）——五者围绕内容力节奏走，不再各自为政。</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ========== 附录 ========== -->
+<h2 class="chapter"><span class="num">附录</span>五家竞品差异化启示 & 账号资产盘点</h2>
+
+<h3 class="section">附录 A · 五家竞品差异化启示</h3>
+
+<table class="data-table">
+  <thead><tr><th>竞品</th><th>模式</th><th>阴山可学</th><th>阴山不建议</th></tr></thead>
+  <tbody>
+    <tr><td class="label-cell">永和豆浆 #1</td><td>多自营号×节点大场×千条短视频</td><td>节点大场机制、多自营号矩阵</td><td>品类不同</td></tr>
+    <tr><td class="label-cell">金味 #9</td><td>3 款"总监专属"×单主号×高效大场</td><td>爆品命名法、少 SKU 多复购</td><td>单一账号风险</td></tr>
+    <tr><td class="label-cell">好麦多 #25</td><td>146 创作者×194K 转发×有机+农科院</td><td>权威背书组合拳、KOC 矩阵化</td><td>达人成本重</td></tr>
+    <tr><td class="label-cell">西麦 #67</td><td>9 自营号×3 主体公司×15 视频号</td><td>多账号矩阵、多主体结构</td><td>主体扩张需时间</td></tr>
+    <tr><td class="label-cell">桂格 #74</td><td>1 超级达人×4 款 99 元礼盒</td><td>礼盒定价、单品聚焦</td><td>单一达人依赖</td></tr>
+  </tbody>
+</table>
+
+<h3 class="section">附录 B · 阴山优麦微信生态账号资产盘点</h3>
+
+<table class="data-table">
+  <thead><tr><th>类型</th><th>账号/店铺</th><th>主体</th><th>状态与说明</th></tr></thead>
+  <tbody>
+    <tr><td class="label-cell">视频号</td><td>阴山优麦燕麦</td><td>内蒙古阴山优麦食品有限公司</td><td><strong>日播中</strong> · 372 条 · 主号</td></tr>
+    <tr><td class="label-cell">视频号</td><td>阴山优麦主食店</td><td>─</td><td><strong>日播中</strong> · 541 条 · 燕麦米主场</td></tr>
+    <tr><td class="label-cell">视频号</td><td>阴山优麦冲饮</td><td>─</td><td><strong>日播中</strong> · 517 条 · 低 GI + 张宏民主场</td></tr>
+    <tr><td class="label-cell">视频号</td><td>阴山优麦国产燕麦</td><td>阴山优麦食品有限公司</td><td>458 条 · 品牌宣传号</td></tr>
+    <tr><td class="label-cell">视频号</td><td>阴山优麦冲饮店</td><td>─</td><td>50 条 · 备用</td></tr>
+    <tr><td class="label-cell">服务号</td><td>阴山优麦国产燕麦</td><td>阴山优麦食品有限公司</td><td>活跃 · "中国有机燕麦领先品牌"</td></tr>
+    <tr><td class="label-cell">服务号</td><td>阴山优麦官方旗舰店</td><td>阴山优麦食品有限公司</td><td>活跃 · "阴山优麦教您健康的生活方式"</td></tr>
+    <tr><td class="label-cell">小程序</td><td>阴山优麦 · 小燕子</td><td>内蒙古蒙薯电子商务有限公司</td><td>燕麦米+燕麦片+燕麦休闲食品</td></tr>
+    <tr><td class="label-cell">小程序</td><td>阴山优麦国产燕麦</td><td>阴山优麦食品有限公司</td><td>"严选世界黄金燕麦产区"</td></tr>
+    <tr><td class="label-cell">微信小店</td><td>阴山优麦工厂店</td><td>品牌自营</td><td>好评率 95.8% · 大粒燕麦主力店</td></tr>
+    <tr><td class="label-cell">微信小店</td><td>阴山优麦主食店</td><td>─</td><td>好评率 95.7% · 燕麦米主力店</td></tr>
+    <tr><td class="label-cell">微信小店</td><td>阴山优麦冲饮</td><td>品牌自营</td><td>好评率 100% · 低 GI + 张宏民</td></tr>
+    <tr><td class="label-cell">微信小店</td><td>阴山优麦有机燕麦片</td><td>─</td><td>达人渠道</td></tr>
+    <tr><td class="label-cell">微信小店</td><td>阴山优麦燕麦片</td><td>─</td><td>备用 · 建议合并</td></tr>
+  </tbody>
+</table>
+
+<div class="appendix">
+<h4>📎 版本更新说明</h4>
+<p style="font-size:9.5pt;color:#4A5568;">
+<strong>v6 修正要点</strong>：① 大粒燕麦爆品结合张宏民推荐 · ② 新增抖音 vs 视频号分品线对照（低 GI 缺口分析）· ③ 新增低 GI 双开视频号 5 阶段路径 · ④ 矩阵评估指标改为"对标抖音复制率+2025 视频号增速"合理测算 · ⑤ 删除"5 店会员打通"表述（微信小店暂无跨店会员能力）· ⑥ 银座商城改为"区域连锁商超合作"通用表述 · ⑦ 视觉重做为总分总结构、腾讯咨询风。
+</p>
+</div>
+
+<p style="text-align:center;margin-top:40px;font-size:9pt;color:#94A3B8;">
+— 报告结束 · YIN SHAN OATS · 2026 H2 · v6 —
+</p>
+
+</div>
+
+</body>
+</html>
